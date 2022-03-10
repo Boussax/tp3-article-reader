@@ -1,0 +1,17 @@
+<div *ngIf="article && isDisplayed" class="modal-barrier">
+    <div class="article-miniature">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <p class="article-author">written by E. Zola</p>
+        <p class="article-body">{{ article.body }}</p>
+        <button (click)="closeArticle()" class="link upper-side right-side">
+            X
+        </button>
+
+        <button (click)="previousArticle()" class="link lower-side left-side">
+            <i class="fal fa-arrow-alt-left"></i>
+        </button>
+        <button (click)="nextArticle()" class="link lower-side right-side">
+            <i class="fal fa-arrow-alt-right"></i>
+        </button>
+    </div>
+</div>

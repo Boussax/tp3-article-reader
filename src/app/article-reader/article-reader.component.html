@@ -1,0 +1,13 @@
+<div class="article-dashboard">
+    <div *ngFor="let article of articleList" class="article-miniature" (click)="openArticle(article.id)">
+        <h3>{{ article.title }}</h3>
+    </div>
+    <app-article-display
+        *ngIf="selectedId != 0 && displayFullArticle"
+        [id]="selectedId"
+        [listSize]="articleList.length"
+        [isDisplayed]="displayFullArticle"
+        (closeArticleEvent)="closeArticle()"
+    ></app-article-display>
+    <app-new-entry [isDisplayed]="true"></app-new-entry>
+</div>

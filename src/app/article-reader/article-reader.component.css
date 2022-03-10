@@ -1,0 +1,24 @@
+.article-dashboard{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap : 10px;
+}
+
+.article-miniature{
+    position: relative;
+    border: 2px solid blue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.article-miniature:hover {
+    background-color: lightgrey;
+}
+
+a{
+    cursor: pointer;
+}

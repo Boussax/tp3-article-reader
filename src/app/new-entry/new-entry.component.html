@@ -1,0 +1,9 @@
+<div *ngIf="isDisplayed" class="form-container">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <input name="title" ngModel required #title="ngModel" />
+        <!-- <input name="author" ngModel /> -->
+        <input name="body" ngModel required #body="ngModel" />
+        <input type="date" name="date" ngModel required #date="ngModel" />
+        <button>Submit</button>
+    </form>
+</div>
