@@ -9,28 +9,53 @@ import { ArticleService } from 'src/services/article.service';
 })
 export class ArticleReaderComponent implements OnInit {
     articleList: Array<IArticle> = [];
+    selectedArticles: Array<number> = [];
     displayFullArticle: boolean = false;
     selectedId : number = 0;
 
     constructor(private articleService: ArticleService) {}
 
     ngOnInit(): void {
+        this.articleList=[];
+        this.selectedArticles=[];
         this.articleService.getAllArticles().subscribe((data) => {
             this.articleList = data;
+            for (let i in this.articleList) {
+                this.selectedArticles.push(0);
+            }
         });
     }
 
     openArticle(id : number) {
         this.displayFullArticle = true;
         this.selectedId = id;
-        console.log('to open : selected id : '+ this.selectedId + ', isDisplayed = ' + this.displayFullArticle);
     }
 
     closeArticle() {
-        console.log('to close : selected id : '+ this.selectedId + ', isDisplayed = ' + this.displayFullArticle);
         this.displayFullArticle = false;
         this.selectedId = 0;
-        console.log('once closed : selected id : '+ this.selectedId + ', isDisplayed = ' + this.displayFullArticle);
+    }
 
+    articleAdded(newArticle: IArticle){
+        this.articleList.push(newArticle);
+        console.log(this.articleList);
+    }
+
+    selectArticle(index:number) {
+        if (this.selectedArticles[index]==0){
+            this.selectedArticles[index] = 1;
+        } else {
+            this.selectedArticles[index] = 0;
+        }
+        console.log(this.selectedArticles);
+    }
+
+    delSelectedArticles(){
+        for (let i in this.selectedArticles) {
+            if (this.selectedArticles[i] == 1) {
+                this.articleService.deleteArticleById(this.articleList[i].id);
+            }
+        }
+        this.ngOnInit();
     }
 }

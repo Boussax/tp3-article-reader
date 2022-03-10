@@ -1,9 +1,10 @@
-<div *ngIf="isDisplayed" class="form-container">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-        <input name="title" ngModel required #title="ngModel" />
+<div *ngIf="isDisplayed">
+    <h2 class="text-center">New article entry</h2>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="form-container">
+        <input name="title" ngModel required #title="ngModel" placeholder="Enter title here..."/>
         <!-- <input name="author" ngModel /> -->
-        <input name="body" ngModel required #body="ngModel" />
-        <input type="date" name="date" ngModel required #date="ngModel" />
+        <input name="body" ngModel required #body="ngModel" placeholder="Enter article body here..."/>
+        <input type="date" name="date" required />
         <button>Submit</button>
     </form>
 </div>

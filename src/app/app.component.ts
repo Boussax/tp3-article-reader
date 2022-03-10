@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tp3-article-reader';
+  title = 'My article reader';
+  description = 'All my favorite sources gathered in one place';
 }

@@ -1,6 +1,32 @@
-<div class="article-dashboard">
-    <div *ngFor="let article of articleList" class="article-miniature" (click)="openArticle(article.id)">
-        <h3>{{ article.title }}</h3>
+<div>
+    <div class="article-controls">
+        <app-new-entry
+            class="form-container"
+            [isDisplayed]="true"
+            (newArticleCreated)="articleAdded($event)"
+        ></app-new-entry>
+        <button
+            class="btn btn-danger float-right"
+            (click)="delSelectedArticles()"
+        >
+            Delete Selected Articles
+        </button>
+    </div>
+    <div class="article-dashboard">
+        <div
+            *ngFor="let article of articleList; let index = index"
+            class="article-miniature"
+            (click)="openArticle(article.id)"
+        >
+            <h3>{{ article.title }}</h3>
+            <div>
+                <input
+                    id="select"
+                    type="checkbox"
+                    (click)="selectArticle(index); $event.stopPropagation()"
+                /><i class="far fa-trash-alt"></i>
+            </div>
+        </div>
     </div>
     <app-article-display
         *ngIf="selectedId != 0 && displayFullArticle"
@@ -9,5 +35,4 @@
         [isDisplayed]="displayFullArticle"
         (closeArticleEvent)="closeArticle()"
     ></app-article-display>
-    <app-new-entry [isDisplayed]="true"></app-new-entry>
 </div>

@@ -2,6 +2,15 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap : 10px;
+    padding: 20px;
+}
+
+.article-controls{
+    display: grid;
+    grid-template-columns: 2.5fr .5fr;
+    grid-gap : 10px;
+    width: 90%;
+    padding-bottom: 20px;
 }
 
 .article-miniature{
@@ -17,8 +26,4 @@
 
 .article-miniature:hover {
     background-color: lightgrey;
-}
-
-a{
-    cursor: pointer;
 }

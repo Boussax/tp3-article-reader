@@ -1,4 +1,27 @@
-
 i{
     font-family:  "Font Awesome 6 Free"; font-weight: 900; font-size: xx-large;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.upper-side {
+    position: absolute;
+    top: 30px;
+}
+
+.right-side {
+    position: absolute;
+    right: 30px;
+}
+
+.lower-side {
+    position: absolute;
+    bottom: 30px;
+}
+
+.left-side {
+    position: absolute;
+    left: 30px;
 }

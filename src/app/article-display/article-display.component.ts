@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ArticleService } from 'src/services/article.service';
 import { IArticle } from '../interfaces/IArticle';
 
@@ -7,14 +7,14 @@ import { IArticle } from '../interfaces/IArticle';
     templateUrl: './article-display.component.html',
     styleUrls: ['./article-display.component.css'],
 })
-export class ArticleDisplayComponent implements OnInit {
+export class ArticleDisplayComponent implements OnInit, AfterViewInit {
     @Input() id: number = 0;
     @Input() listSize: number = 0;
     @Input() isDisplayed: boolean = false;
     @Output() closeArticleEvent = new EventEmitter<boolean>();
     article?: IArticle;
 
-    constructor(private articleService: ArticleService) {}
+    constructor(private articleService: ArticleService, private elementRef: ElementRef) {}
 
     ngOnInit(): void {
         console.log(
@@ -28,6 +28,10 @@ export class ArticleDisplayComponent implements OnInit {
         });
     }
 
+    ngAfterViewInit(){
+        this.elementRef.nativeElement.focus();
+    }
+
     closeArticle() {
         this.isDisplayed = false;
         this.closeArticleEvent.emit(false);
@@ -35,17 +39,17 @@ export class ArticleDisplayComponent implements OnInit {
 
     previousArticle() {
         console.log('previous');
-        if (this.id > 0) {
-            this.id--;
-            this.ngOnInit();
-        }
+        this.id--;
+        this.ngOnInit();
     }
 
     nextArticle() {
         console.log('next');
-        if (this.id < this.listSize) {
-            this.id++;
-            this.ngOnInit();
-        }
+        this.id++;
+        this.ngOnInit();
+    }
+
+    printComment(){
+        console.log('this is my comment');
     }
 }

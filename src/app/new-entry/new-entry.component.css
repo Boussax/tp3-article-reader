@@ -1,8 +1,6 @@
 .form-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top:20px;
-    right: 20px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
     border: solid;
 }
